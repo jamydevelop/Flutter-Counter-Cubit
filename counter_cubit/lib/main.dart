@@ -65,6 +65,15 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             BlocBuilder<CounterCubit, CounterState>(
               builder: (context, state) {
+                if (state.counterValue <= 0) {
+                  return Text(
+                    "NEGATIVE NUMBER: ${state.counterValue}",
+                  );
+                } else if (state.counterValue > 5) {
+                  return Text(
+                    "MORE THAN 5 NUMBER: ${state.counterValue}",
+                  );
+                }
                 return Text(
                   state.counterValue.toString(),
                 );
