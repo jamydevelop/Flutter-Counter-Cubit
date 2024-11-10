@@ -47,47 +47,59 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            BlocBuilder<CounterCubit, CounterState>(
-              builder: (context, state) {
-                return Text(
-                  state.counterValue.toString(),
-                );
-              },
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                FloatingActionButton(
-                  onPressed: () {
-                    // BlocProvider.of<CounterCubit>(context).dicrement();
-                    context.read<CounterCubit>().decrement();
-                  },
-                  tooltip: "Decrement",
-                  child: const Icon(Icons.remove),
-                ),
-                FloatingActionButton(
-                  onPressed: () {
-                    BlocProvider.of<CounterCubit>(context).increment();
-                  },
-                  tooltip: "Add",
-                  child: const Icon(Icons.add),
-                ),
-              ],
-            )
-          ],
+      body: BlocListener<CounterCubit, CounterState>(
+        listener: (context, state) {
+          const snackBar1 = SnackBar(content: Text('Incremented!'));
+          const snackBar2 = SnackBar(content: Text('Decremented!'));
+
+          if (state.wasIncremented == true) {
+            ScaffoldMessenger.of(context).showSnackBar(snackBar1);
+          } else if (state.wasIncremented == false) {
+            ScaffoldMessenger.of(context).showSnackBar(snackBar2);
+          }
+        },
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text(
+                'You have pushed the button this many times:',
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              BlocBuilder<CounterCubit, CounterState>(
+                builder: (context, state) {
+                  return Text(
+                    state.counterValue.toString(),
+                  );
+                },
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  FloatingActionButton(
+                    onPressed: () {
+                      // BlocProvider.of<CounterCubit>(context).dicrement();
+                      context.read<CounterCubit>().decrement();
+                    },
+                    tooltip: "Decrement",
+                    child: const Icon(Icons.remove),
+                  ),
+                  FloatingActionButton(
+                    onPressed: () {
+                      BlocProvider.of<CounterCubit>(context).increment();
+                    },
+                    tooltip: "Add",
+                    child: const Icon(Icons.add),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
