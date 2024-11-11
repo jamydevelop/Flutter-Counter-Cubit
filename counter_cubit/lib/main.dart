@@ -52,8 +52,15 @@ class _MyHomePageState extends State<MyHomePage> {
           if (state.wasIncremented == true) {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
-                content: Text('Incremented!'),
-                duration: Duration(seconds: 1), // 1 second duration
+                content: Text(
+                  'Incremented!',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+                duration: Duration(seconds: 1),
+                backgroundColor: Colors.amber,
+                // 1 second duration
               ),
             );
           } else if (state.wasIncremented == false) {
