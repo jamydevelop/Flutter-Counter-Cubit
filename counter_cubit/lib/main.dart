@@ -66,8 +66,12 @@ class _MyHomePageState extends State<MyHomePage> {
           } else if (state.wasIncremented == false) {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
-                content: Text('Decremented!'),
-                duration: Duration(seconds: 1), // 1 second duration
+                content: Text(
+                  'Decremented!',
+                  style: TextStyle(color: Colors.black),
+                ),
+                duration: Duration(seconds: 1),
+                backgroundColor: Colors.green, // 1 second duration
               ),
             );
           }
