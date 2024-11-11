@@ -49,13 +49,20 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: BlocListener<CounterCubit, CounterState>(
         listener: (context, state) {
-          const snackBar1 = SnackBar(content: Text('Incremented!'));
-          const snackBar2 = SnackBar(content: Text('Decremented!'));
-
           if (state.wasIncremented == true) {
-            ScaffoldMessenger.of(context).showSnackBar(snackBar1);
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Incremented!'),
+                duration: Duration(seconds: 1), // 1 second duration
+              ),
+            );
           } else if (state.wasIncremented == false) {
-            ScaffoldMessenger.of(context).showSnackBar(snackBar2);
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Decremented!'),
+                duration: Duration(seconds: 1), // 1 second duration
+              ),
+            );
           }
         },
         child: Center(
