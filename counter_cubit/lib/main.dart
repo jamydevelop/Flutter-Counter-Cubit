@@ -90,6 +90,10 @@ class _MyHomePageState extends State<MyHomePage> {
               builder: (context, state) {
                 return Text(
                   state.counterValue.toString(),
+                  style: const TextStyle(
+                    fontSize: 48,
+                    fontWeight: FontWeight.bold,
+                  ),
                 );
               },
             ),
