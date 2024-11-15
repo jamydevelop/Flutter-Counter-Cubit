@@ -105,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 FloatingActionButton(
                   onPressed: () {
-                    // BlocProvider.of<CounterCubit>(context).dicrement();
+                    // BlocProvider.of<CounterCubit>(context).decrement();
                     context.read<CounterCubit>().decrement();
                   },
                   tooltip: "Decrement",
