@@ -6,7 +6,7 @@ void main() {
   runApp(const MyApp());
 }
 
-//test
+//bloc access and navigation
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
